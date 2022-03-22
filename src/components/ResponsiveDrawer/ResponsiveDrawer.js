@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, CssBaseline, Drawer, Toolbar, Typography, List, ListItem} from '@mui/material';
+import {Box, CssBaseline, Drawer, Toolbar, List, ListItem} from '@mui/material';
 import BasicTable from '../Table/Table';
 import DrawerItems from './Drawer/Drawer';
 import Navbar from './Navbar/Navbar';
@@ -50,7 +50,7 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box component="main" sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
         <Toolbar />
-        <Typography variant='h6' gutterBottom align='center' >PROJECTS</Typography>
+
         <BasicTable></BasicTable>
         <List>
           {projects.map(({title, _id}) => (

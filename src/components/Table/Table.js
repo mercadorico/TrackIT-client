@@ -6,7 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button'
+import { Typography, IconButton  } from '@mui/material';
+import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -25,13 +26,22 @@ export default function BasicTable() {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="left">Calories</TableCell>
-            <TableCell align="left">Fat&nbsp;(g)</TableCell>
-            <TableCell align="left">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="left">Protein&nbsp;(g)</TableCell>
-            <TableCell align="center">Action</TableCell>
+          <TableRow sx={{bgcolor : 'primary.main'}}>
+            <TableCell>
+              <Typography variant='h6' color='primary.contrastText'>Project Name</Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography variant='h6' color='primary.contrastText'>Date Started</Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography variant='h6' color='primary.contrastText'>Status</Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography variant='h6' color='primary.contrastText'>Issues</Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography variant='h6' color='primary.contrastText'>View</Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,10 +56,10 @@ export default function BasicTable() {
               <TableCell align="left">{row.calories}</TableCell>
               <TableCell align="left">{row.fat}</TableCell>
               <TableCell align="left">{row.carbs}</TableCell>
-              <TableCell align="left">{row.protein}</TableCell>
-              <TableCell align="center">
-                <Button variant="contained" size='small' sx={{mr: 1}}>View</Button>
-                <Button variant="contained" size='small'>Delete</Button>
+              <TableCell align="left">
+                <IconButton color='inherit' size='small'>
+                  <PreviewOutlinedIcon />
+                </IconButton>
               </TableCell>
             </TableRow>
           ))}

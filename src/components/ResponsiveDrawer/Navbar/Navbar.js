@@ -1,17 +1,16 @@
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
-import { Typography, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Typography, AppBar, Toolbar, IconButton, Divider } from '@mui/material';
 
 const Navbar = ({drawerWidth, handleDrawerToggle}) => {
   return (
-    <AppBar
-        position="fixed"
+    <AppBar color='inherit' position="fixed" elevation={0}
         sx={{
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
         }}
     >
-        <Toolbar>
+        <Toolbar variant='regular'>
         <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -22,10 +21,11 @@ const Navbar = ({drawerWidth, handleDrawerToggle}) => {
             <MenuIcon />
         </IconButton>
         <Typography variant="h5" noWrap component="div" >
-            Issue Tracker
+            Issue Tracker App
         </Typography>
         </Toolbar>
-    </AppBar>
+        <Divider />
+    </AppBar> 
   )
 }
 
