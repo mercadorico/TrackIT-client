@@ -10,3 +10,13 @@ export const getProjects = () => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const createProject = (project) => async (dispatch) => {
+    try {
+        const { data } = api.createProject(project);
+
+        dispatch({type: 'CREATE', payload: data})
+    } catch (error) {
+        console.log(error);
+    }
+}
