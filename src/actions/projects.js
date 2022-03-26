@@ -13,9 +13,19 @@ export const getProjects = () => async (dispatch) => {
 
 export const createProject = (project) => async (dispatch) => {
     try {
-        const { data } = api.createProject(project);
+        const { data } = await api.createProject(project);
 
         dispatch({type: 'CREATE', payload: data})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteProject = (id) => async (dispatch) => {
+    try {
+        await api.deleteProject(id);
+
+        dispatch({type: 'DELETE', payload: id});
     } catch (error) {
         console.log(error);
     }

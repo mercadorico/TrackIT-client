@@ -1,62 +1,64 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Typography, IconButton  } from '@mui/material';
-import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteProject, getProjects } from '../../actions/projects';
 
 export default function BasicTable() {
+    const dispatch = useDispatch();
+    const projects = useSelector((state) => state.projects);
+    
+    const handleDelete = (id) => {
+      dispatch(deleteProject(id));
+    }
 
-  const projects = useSelector((state) => state.projects);
+    useEffect(() => {
+      dispatch(getProjects());
+    }, [projects, dispatch])
 
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 450 }} aria-label="simple table">
-        <TableHead>
-          <TableRow sx={{bgcolor : 'primary.main'}}>
-            <TableCell>
-              <Typography variant='h6' color='primary.contrastText'>Project Name</Typography>
-            </TableCell>
-            <TableCell align="left">
-              <Typography variant='h6' color='primary.contrastText'>Date Started</Typography>
-            </TableCell>
-            <TableCell align="left">
-              <Typography variant='h6' color='primary.contrastText'>Status</Typography>
-            </TableCell>
-            <TableCell align="left">
-              <Typography variant='h6' color='primary.contrastText'>Issues</Typography>
-            </TableCell>
-            <TableCell align="left">
-              <Typography variant='h6' color='primary.contrastText'>View</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {projects.map(({_id, title, createdAt, bugs}) => (
-            <TableRow
-              key={_id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {title}
+    return (
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 450 }} aria-label="simple table">
+          <TableHead>
+            <TableRow sx={{bgcolor : 'primary.main'}}>
+              <TableCell>
+                <Typography variant='subtitle1' color='primary.contrastText'>Project Name</Typography>
               </TableCell>
-              <TableCell align="left">{createdAt}</TableCell>
-              <TableCell align="left">Ongoing</TableCell>
-              <TableCell align="left">{bugs.length}</TableCell>
               <TableCell align="left">
-                <IconButton color='inherit' size='small'>
-                  <PreviewOutlinedIcon />
-                </IconButton>
+                <Typography variant='subtitle1' color='primary.contrastText'>Date Started</Typography>
+              </TableCell>
+              <TableCell align="left">
+                <Typography variant='subtitle1' color='primary.contrastText'>Status</Typography>
+              </TableCell>
+              <TableCell align="left">
+                <Typography variant='subtitle1' color='primary.contrastText'>Issues</Typography>
+              </TableCell>
+              <TableCell align="left">
+                <Typography variant='subtitle1' color='primary.contrastText'>Actions</Typography>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+          </TableHead>
+
+          <TableBody>
+            {projects.map(({_id, title, createdAt, bugs}) => (
+              <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell component="th" scope="row"> {title} </TableCell>
+                <TableCell align="left">{createdAt}</TableCell>
+                <TableCell align="left">Ongoing</TableCell>
+                <TableCell align="left">{bugs.length}</TableCell>
+                <TableCell align="left">
+                  <IconButton color='inherit' size='small' sx={{mr: 1}}>
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton color='inherit' size='small' onClick={() => handleDelete(_id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
 }
