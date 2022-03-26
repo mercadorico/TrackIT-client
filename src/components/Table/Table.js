@@ -8,20 +8,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography, IconButton  } from '@mui/material';
 import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+import { useSelector } from 'react-redux';
 
 export default function BasicTable() {
+
+  const projects = useSelector((state) => state.projects);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
@@ -45,17 +37,17 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {projects.map(({_id, title, createdAt, bugs}) => (
             <TableRow
-              key={row.name}
+              key={_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {title}
               </TableCell>
-              <TableCell align="left">{row.calories}</TableCell>
-              <TableCell align="left">{row.fat}</TableCell>
-              <TableCell align="left">{row.carbs}</TableCell>
+              <TableCell align="left">{createdAt}</TableCell>
+              <TableCell align="left">Ongoing</TableCell>
+              <TableCell align="left">{bugs.length}</TableCell>
               <TableCell align="left">
                 <IconButton color='inherit' size='small'>
                   <PreviewOutlinedIcon />
