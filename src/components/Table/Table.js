@@ -8,6 +8,7 @@ import { deleteProject, getProjects } from '../../actions/projects';
 export default function BasicTable() {
     const dispatch = useDispatch();
     const projects = useSelector((state) => state.projects);
+    const tableHeader = ['Project Name', 'Date Started', 'Status', 'Issues', 'Actions']
     
     const handleDelete = (id) => {
       dispatch(deleteProject(id));
@@ -22,21 +23,11 @@ export default function BasicTable() {
         <Table sx={{ minWidth: 450 }} aria-label="simple table">
           <TableHead>
             <TableRow sx={{bgcolor : 'primary.main'}}>
-              <TableCell>
-                <Typography variant='subtitle1' color='primary.contrastText'>Project Name</Typography>
-              </TableCell>
-              <TableCell align="left">
-                <Typography variant='subtitle1' color='primary.contrastText'>Date Started</Typography>
-              </TableCell>
-              <TableCell align="left">
-                <Typography variant='subtitle1' color='primary.contrastText'>Status</Typography>
-              </TableCell>
-              <TableCell align="left">
-                <Typography variant='subtitle1' color='primary.contrastText'>Issues</Typography>
-              </TableCell>
-              <TableCell align="left">
-                <Typography variant='subtitle1' color='primary.contrastText'>Actions</Typography>
-              </TableCell>
+              {tableHeader.map((item) => (
+                <TableCell>
+                  <Typography variant='subtitle1' color='primary.contrastText'>{item}</Typography>
+                </TableCell>           
+              ))}
             </TableRow>
           </TableHead>
 
