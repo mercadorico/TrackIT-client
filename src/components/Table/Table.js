@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProject, getProjects } from '../../actions/projects';
+import { getProjects } from '../../actions/projects';
+import DeleteModal from './DeleteModal/DeleteModal';
 
 export default function BasicTable() {
     const dispatch = useDispatch();
     const projects = useSelector((state) => state.projects);
     const tableHeader = ['Project Name', 'Date Started', 'Status', 'Issues', 'Actions']
-    
-    const handleDelete = (id) => {
-      dispatch(deleteProject(id));
-    }
 
     useEffect(() => {
       dispatch(getProjects());
@@ -42,9 +38,7 @@ export default function BasicTable() {
                   <IconButton color='inherit' size='small' sx={{mr: 1}}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton color='inherit' size='small' onClick={() => handleDelete(_id)}>
-                    <DeleteIcon />
-                  </IconButton>
+                  <DeleteModal id={_id} />
                 </TableCell>
               </TableRow>
             ))}
