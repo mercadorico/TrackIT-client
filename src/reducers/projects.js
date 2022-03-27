@@ -6,6 +6,8 @@ const projectsReducer = (projects = [], action) => {
             return [projects, action.payload];
         case 'DELETE':
             return projects.filter((project) => project._id !== action.payload);
+        case 'SELECT_PROJECT':
+            return action.payload;
         default:
             return projects;
     }
