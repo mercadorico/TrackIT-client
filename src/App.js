@@ -30,7 +30,9 @@ const App = () => {
 
                 <DrawerCustom mobileOpen={mobileOpen} drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} />
 
-                <Projects drawerWidth={drawerWidth} />
+                <Box component="main" sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+                    <Projects />
+                </Box>
             </Box>   
     );
 }

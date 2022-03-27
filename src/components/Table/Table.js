@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProjects } from '../../actions/projects';
 import DeleteModal from './DeleteModal/DeleteModal';
 
 export default function BasicTable() {
@@ -11,7 +10,7 @@ export default function BasicTable() {
     const tableHeader = ['Project Name', 'Date Started', 'Status', 'Issues', 'Actions']
 
     useEffect(() => {
-      dispatch(getProjects());
+      // re-render the DOM when projects state changes value.
     }, [projects, dispatch])
 
     return (

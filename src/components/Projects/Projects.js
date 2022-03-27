@@ -1,15 +1,15 @@
 import React from 'react'
-import {Box, Toolbar} from '@mui/material'
+import {Toolbar} from '@mui/material'
 import BasicTable from '../Table/Table'
 import AddProject from './AddProject/AddProject'
 
-const Projects = ({drawerWidth}) => {
+const Projects = () => {
   return (
-    <Box component="main" sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-        <Toolbar />
-        <AddProject></AddProject>
-        <BasicTable></BasicTable>
-    </Box>
+    <>
+      <Toolbar />
+      <AddProject></AddProject>
+      <BasicTable></BasicTable> 
+    </>
   )
 }
 

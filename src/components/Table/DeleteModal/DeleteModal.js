@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const DeleteModal = ({id}) => {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -17,7 +18,7 @@ const DeleteModal = ({id}) => {
 
     const handleDelete = (id) => {
         dispatch(deleteProject(id));
-      }
+    }
   
     return (
         <>
