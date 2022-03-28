@@ -33,9 +33,9 @@ export const deleteProject = (id) => async (dispatch) => {
 
 export const selectProject = (id) => async (dispatch) => {
     try {
-        const {data} = await api.selectProject(id);
-
-        dispatch({type: 'SELECT_PROJECT', payload: [data]});
+        const { data } = await api.selectProject(id);
+        
+        dispatch({type: 'SELECT_PROJECT', payload: data});
     } catch (error) {
         console.log(error);
     }

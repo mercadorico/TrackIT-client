@@ -27,7 +27,6 @@ export default function BasicTable() {
                 ))}
               </TableRow>
             </TableHead>
-            {projects.length === 1 ? null ://conditional rendering due projects state is not yet transformed on first render, try removing condition to see effect.
               <TableBody>
               {projects.map(({_id, title, createdAt, bugs}) => (
                 <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
@@ -44,8 +43,6 @@ export default function BasicTable() {
                 </TableRow>
               ))}
             </TableBody>
-            }
-
           </Table>
         </TableContainer>
     );
