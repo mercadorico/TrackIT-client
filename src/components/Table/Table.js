@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -11,10 +11,7 @@ export default function BasicTable() {
     const projects = useSelector((state) => state.projects);
     const tableHeader = ['Project Name', 'Date Started', 'Status', 'Issues', 'Actions']
 
-    useEffect(() => {
-      // re-render when projects state changes value.
-    }, [projects, dispatch])
-
+    console.log(projects);
     return (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 450 }} aria-label="simple table">
@@ -33,7 +30,7 @@ export default function BasicTable() {
                   <TableCell component="th" scope="row"> {title} </TableCell>
                   <TableCell align="left">{createdAt}</TableCell>
                   <TableCell align="left">Ongoing</TableCell>
-                  <TableCell align="left">{bugs.length}</TableCell>
+                  <TableCell align="left">1</TableCell>
                   <TableCell align="left">
                     <IconButton component={Link} to={`projects/${_id}`} color='inherit' size='small' sx={{mr: 1}} onClick={() => dispatch(selectProject(_id))} >
                         <EditIcon />

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, CardContent, CardActions, Typography, Button, Toolbar } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects, selectProject } from '../../actions/projects';
+import UpdateProject from './UpdateProject/UpdateProject';
 
 const SelectedProject = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const SelectedProject = () => {
     // fetch selected project when page is refreshed and state.selectedProject is reset into an empty object.
     useEffect(() => {
         dispatch(selectProject(param.id));
-    }, [param.id, dispatch, _id]);
+    }, [param.id, dispatch]);
 
     return (
         <>
@@ -29,7 +30,7 @@ const SelectedProject = () => {
                     <Typography variant='body2'>{description}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button>EDIT</Button>
+                    <UpdateProject id={_id} title={title} description={description} />
                     <Button component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                 </CardActions>
             </Card>

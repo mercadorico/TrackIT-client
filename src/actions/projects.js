@@ -40,3 +40,13 @@ export const selectProject = (id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const updateProject = (id, updatedProject) => async (dispatch) => {
+    try {
+        const { data } = await api.updateProject(id, updatedProject);
+
+        dispatch({type: 'UPDATE_PROJECT', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
