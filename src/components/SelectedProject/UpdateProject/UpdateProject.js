@@ -24,14 +24,14 @@ const UpdateProject = ({id, title, description}) => {
 
     return (
         <>
-        <Button variant='contained' onClick={handleClickOpen} sx={{mb: 2}}>
+        <Button variant='outlined' onClick={handleClickOpen} sx={{mr: 1}}>
             EDIT
         </Button>
         <Dialog open={open} onClose={handleClose} fullWidth>
             <DialogTitle>Add Project</DialogTitle>
             <form autoComplete='off' onSubmit={handleSubmit}>
                 <DialogContent>
-                       <TextField name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small' value={selectedProject.title}
+                    <TextField name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small' value={selectedProject.title}
                         onChange={(e) => setSelectedProject({...selectedProject, title: e.target.value})}>
                     </TextField> 
                     <TextField name='description' type='text' label='Write description' fullWidth multiline minRows={3} maxRows={6} value={selectedProject.description}

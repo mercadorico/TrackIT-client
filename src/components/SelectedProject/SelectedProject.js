@@ -4,6 +4,7 @@ import { Card, CardContent, CardActions, Typography, Button, Toolbar } from '@mu
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects, selectProject } from '../../actions/projects';
 import UpdateProject from './UpdateProject/UpdateProject';
+import Bugs from './BugsByProject/Bugs';
 
 const SelectedProject = () => {
     const dispatch = useDispatch();
@@ -29,11 +30,12 @@ const SelectedProject = () => {
                     <Typography variant='h6' gutterBottom>{title}</Typography>
                     <Typography variant='body2'>{description}</Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions >
                     <UpdateProject id={_id} title={title} description={description} />
-                    <Button component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
+                    <Button variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                 </CardActions>
             </Card>
+            <Bugs id={_id} />
         </>
     )
 }
