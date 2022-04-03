@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toolbar} from '@mui/material'
+import {Toolbar, Box} from '@mui/material'
 import BasicTable from '../Table/Table'
 import AddProject from './AddProject/AddProject'
 
@@ -7,8 +7,10 @@ const Projects = () => {
   return (
     <>
       <Toolbar />
-      <AddProject></AddProject>
       <BasicTable></BasicTable> 
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <AddProject/>
+      </Box>
     </>
   )
 }

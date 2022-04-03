@@ -2,17 +2,8 @@ import React, { useEffect } from 'react';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button  } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBugs } from '../../../actions/bugs';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
-
-const theme = createTheme({
-    palette: {
-        myColor: {
-            customBackground: grey[100],
-            textColor: grey[600]
-        },
-    }
-})
+import { ThemeProvider } from '@mui/material/styles';
+import myTheme from './styles.js';
 
 const Bugs = ({id}) => {
     const dispatch = useDispatch();
@@ -23,7 +14,7 @@ const Bugs = ({id}) => {
     }, [dispatch, id]);
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={myTheme} >
             <TableContainer component={Paper} sx={{ maxWidth: 650, mt: 2 }}>
                 <Table aria-label='bugs-table'>
                     <TableHead>

@@ -23,17 +23,17 @@ const AddProject = () => {
 
     return (
         <>
-            <Button variant='contained' onClick={handleClickOpen} sx={{mb: 2}}>
+            <Button endIcon variant='contained' onClick={handleClickOpen} sx={{mt: 2}}>
                 Add Project
             </Button>
             <Dialog open={open} onClose={handleClose} fullWidth>
-                <DialogTitle>Add Project</DialogTitle>
+                <DialogTitle>ADD PROJECT</DialogTitle>
                 <form autoComplete='off' onSubmit={handleSubmit}>
                     <DialogContent>
-                        <TextField name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small' 
+                        <TextField required name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small' 
                             onChange={(e) => setProject({...project, title: e.target.value})}>
                         </TextField>
-                        <TextField name='description' type='text' label='Write description' fullWidth multiline minRows={3} maxRows={6}
+                        <TextField required name='description' type='text' label='Write description' fullWidth multiline minRows={3} maxRows={6}
                             onChange={(e) => setProject({...project, description: e.target.value})}>
                         </TextField>
                     </DialogContent>

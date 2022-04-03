@@ -24,7 +24,7 @@ const UpdateProject = ({id, title, description}) => {
 
     return (
         <>
-        <Button variant='outlined' onClick={handleClickOpen} sx={{mr: 1}}>
+        <Button size='small' variant='outlined' onClick={handleClickOpen} sx={{mr: 1}}>
             EDIT
         </Button>
         <Dialog open={open} onClose={handleClose} fullWidth>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IconButton, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { IconButton, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { deleteProject } from '../../../actions/projects'
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,9 +22,11 @@ const DeleteModal = ({id}) => {
   
     return (
         <>
-            <IconButton color='inherit' size='small' onClick={handleClickOpen}>
-                <DeleteIcon />
-            </IconButton>
+            <Tooltip title='Delete'>
+                <IconButton color='inherit' size='small' onClick={handleClickOpen}>
+                    <DeleteIcon />
+                </IconButton>
+            </Tooltip>
             <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle>Delete Project</DialogTitle>
                 <DialogContent>

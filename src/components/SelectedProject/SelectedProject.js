@@ -32,7 +32,7 @@ const SelectedProject = () => {
                 </CardContent>
                 <CardActions >
                     <UpdateProject id={_id} title={title} description={description} />
-                    <Button variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
+                    <Button size='small' variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                 </CardActions>
             </Card>
             <Bugs id={_id} />
