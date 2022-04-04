@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button  } from '@mui/material';
+import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBugs } from '../../../actions/bugs';
 import { ThemeProvider } from '@mui/material/styles';
 import myTheme from './styles.js';
+import ReportBug from './ReportBug/ReportBug';
 
 const Bugs = ({id}) => {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Bugs = ({id}) => {
                         <TableRow >
                             <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <Typography variant='subtitle1' >BUGS</Typography>
-                                <Button variant='contained' size='small'>New Ticket</Button>
+                                <ReportBug/>
                             </TableCell>
                         </TableRow>
                         <TableRow sx={{bgcolor: 'myColor.customBackground'}}>
