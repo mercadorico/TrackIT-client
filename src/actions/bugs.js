@@ -20,3 +20,13 @@ export const reportBug = (id, newBug) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const selectBug = (project_id, id) => async (dispatch) => {
+    try {
+        const { data } = await api.selectBug(project_id, id);
+
+        dispatch({type: 'SELECT_BUG', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
