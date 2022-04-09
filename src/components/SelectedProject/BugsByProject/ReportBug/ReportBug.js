@@ -27,6 +27,7 @@ const ReportBug = ({id}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(reportBug(id, bug));
+        setBug({title: '', detail: '', status: '', priority: ''});
     }
 
     return (
@@ -47,7 +48,8 @@ const ReportBug = ({id}) => {
 
                         <FormControl sx={{minWidth: 130}} size='small'>
                             <InputLabel id='status-select-label'>Status</InputLabel>
-                            <Select name='status' value={bug.status} label='Status' id='status-select' labelId='status-select-label' onChange={handleStatusChange}>
+                            <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty
+                                onChange={handleStatusChange}> 
                                 <MenuItem value='open'>Open</MenuItem>
                                 <MenuItem value='closed'>Closed</MenuItem>
                                 <MenuItem value='in-progress'>In Progress</MenuItem>
@@ -56,7 +58,7 @@ const ReportBug = ({id}) => {
                         </FormControl>
                         <FormControl sx={{minWidth: 130}} size='small'>
                             <InputLabel id='priority-select-label'>Priority</InputLabel>
-                            <Select name='priority' value={bug.priority} label='Priority' id='priority-select' labelId='priority-select-label' 
+                            <Select name='priority' label='Priority' id='priority-select' labelId='priority-select-label' displayEmpty
                                 onChange={handlePriorityChange}>
                                     <MenuItem value='Low'>Low</MenuItem>
                                     <MenuItem value='Medium'>Medium</MenuItem>

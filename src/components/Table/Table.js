@@ -18,7 +18,7 @@ export default function BasicTable() {
             <TableHead>
               <TableRow >
                 {tableHeader.map((item) => (
-                  <TableCell>
+                  <TableCell key={item}>
                     <Typography variant='subtitle1'>{item}</Typography>
                   </TableCell>           
                 ))}
