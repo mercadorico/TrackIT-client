@@ -22,7 +22,7 @@ const Bugs = ({id}) => {
                         <TableRow >
                             <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                                 <Typography variant='subtitle1' >BUGS</Typography>
-                                <ReportBug/>
+                                <ReportBug id={id} />
                             </TableCell>
                         </TableRow>
                         <TableRow sx={{bgcolor: 'myColor.customBackground'}}>

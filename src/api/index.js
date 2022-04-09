@@ -9,3 +9,4 @@ export const selectProject = (id) => axios.get(`${url}/${id}`);
 export const updateProject = (id, project) => axios.patch(`${url}/${id}`, project);
 
 export const fetchBugsByProject = (id) => axios.get(`${url}/${id}/bugs`);
+export const reportBug = (id, newBug) => axios.post(`${url}/${id}/bugs`, newBug);

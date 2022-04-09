@@ -23,7 +23,7 @@ const AddProject = () => {
 
     return (
         <>
-            <Button endIcon variant='contained' onClick={handleClickOpen} sx={{mt: 2}}>
+            <Button variant='contained' onClick={handleClickOpen} sx={{mt: 2}}>
                 Add Project
             </Button>
             <Dialog open={open} onClose={handleClose} fullWidth>

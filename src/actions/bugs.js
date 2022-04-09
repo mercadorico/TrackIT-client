@@ -10,3 +10,13 @@ export const fetchBugs = (id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const reportBug = (id, newBug) => async (dispatch) => {
+    try {
+        const { data } = await api.reportBug(id, newBug);
+
+        dispatch({type: 'REPORT_BUG', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

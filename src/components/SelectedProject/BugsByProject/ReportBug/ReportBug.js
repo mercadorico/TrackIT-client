@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
+import { useDispatch } from 'react-redux';
+import { reportBug } from '../../../../actions/bugs';
 
-const ReportBug = () => {
+const ReportBug = ({id}) => {
     const [bug, setBug] = useState({title: '', detail: '', status: '', priority: ''});
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -21,6 +24,11 @@ const ReportBug = () => {
         setBug({...bug, priority: event.target.value});
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(reportBug(id, bug));
+    }
+
     return (
         <>
             <Button variant='contained' size='small' onClick={handleClickOpen}>
@@ -28,10 +36,14 @@ const ReportBug = () => {
             </Button>
             <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle>Report a Bug</DialogTitle>
-                <form autoComplete='off'>
+                <form autoComplete='off' onSubmit={handleSubmit} >
                     <DialogContent>
-                        <TextField required name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small'> </TextField>
-                        <TextField required name='detail' type='text' label='Write Detail' fullWidth multiline minRows={3} maxRows={6} sx={{mb: 2}}> </TextField>
+                        <TextField required name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small'
+                            onChange={(e) => setBug({...bug, title: e.target.value})}> 
+                        </TextField>
+                        <TextField required name='detail' type='text' label='Write Detail' fullWidth multiline minRows={3} maxRows={6} sx={{mb: 2}}
+                            onChange={(e) => setBug({...bug, detail: e.target.value})} > 
+                        </TextField>
 
                         <FormControl sx={{minWidth: 130}} size='small'>
                             <InputLabel id='status-select-label'>Status</InputLabel>
