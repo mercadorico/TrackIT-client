@@ -22,7 +22,8 @@ const Bugs = ({project_id}) => {
 
     return (
         <ThemeProvider theme={myTheme} >
-            <TableContainer component={Paper} sx={{ maxWidth: 650, mt: 2 }}>
+            {bugs.length === 0 ? null : 
+                <TableContainer component={Paper} sx={{ maxWidth: 650, mt: 2 }}>
                 <Table aria-label='bugs-table'>
                     <TableHead>
                         <TableRow >
@@ -44,7 +45,8 @@ const Bugs = ({project_id}) => {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+                </TableContainer>
+            }
         </ThemeProvider>
 
   )
