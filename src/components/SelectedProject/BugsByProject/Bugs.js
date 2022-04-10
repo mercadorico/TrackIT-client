@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBugs, selectBug } from '../../../actions/bugs';
 import { ThemeProvider } from '@mui/material/styles';
@@ -22,13 +22,21 @@ const Bugs = ({project_id}) => {
 
     return (
         <ThemeProvider theme={myTheme} >
-            {bugs.length === 0 ? null : 
-                <TableContainer component={Paper} sx={{ maxWidth: 650, mt: 2 }}>
+            {bugs.length === 0 ? 
+                <Card sx={{maxWidth: 500, mt: 2}}>
+                    <CardContent>
+                        <Typography>No Bugs Listed Yet</Typography>
+                    </CardContent>
+                    <CardActions>
+                        <ReportBug id={project_id} />
+                    </CardActions>
+                </Card> : 
+                <TableContainer component={Paper} sx={{ maxWidth: 500, mt: 2 }}>
                 <Table aria-label='bugs-table'>
                     <TableHead>
                         <TableRow >
-                            <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                <Typography variant='subtitle1' >BUGS</Typography>
+                            <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} size='small'>
+                                <Typography sx={{fontSize: 14, fontWeight: 700}} >Bug List</Typography>
                                 <ReportBug id={project_id} />
                             </TableCell>
                         </TableRow>

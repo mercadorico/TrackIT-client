@@ -32,7 +32,7 @@ const ReportBug = ({id}) => {
 
     return (
         <>
-            <Button variant='contained' size='small' onClick={handleClickOpen}>
+            <Button variant='outlined' size='small' onClick={handleClickOpen}>
                 New Ticket
             </Button>
             <Dialog open={open} onClose={handleClose} fullWidth>
@@ -50,10 +50,10 @@ const ReportBug = ({id}) => {
                             <InputLabel id='status-select-label'>Status</InputLabel>
                             <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty
                                 onChange={handleStatusChange}> 
-                                <MenuItem value='open'>Open</MenuItem>
-                                <MenuItem value='closed'>Closed</MenuItem>
-                                <MenuItem value='in-progress'>In Progress</MenuItem>
-                                <MenuItem value='resolved'>Resolved</MenuItem>
+                                <MenuItem value='Open'>Open</MenuItem>
+                                <MenuItem value='Closed'>Closed</MenuItem>
+                                <MenuItem value='In-Progress'>In Progress</MenuItem>
+                                <MenuItem value='Resolved'>Resolved</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl sx={{minWidth: 130}} size='small'>

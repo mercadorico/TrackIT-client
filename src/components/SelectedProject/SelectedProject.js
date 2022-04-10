@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { Card, CardContent, CardActions, Typography, Button, Toolbar } from '@mui/material'
+import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects, selectProject } from '../../actions/projects';
 import UpdateProject from './UpdateProject/UpdateProject';
@@ -27,7 +27,7 @@ const SelectedProject = () => {
     return (
         <>
             <Toolbar />
-            <Card sx={{maxWidth: 650}} >
+            <Card sx={{maxWidth: 500}} >
                 <CardContent>
                     <Typography variant='h6' gutterBottom>{title}</Typography>
                     <Typography variant='body2'>{description}</Typography>
@@ -37,8 +37,10 @@ const SelectedProject = () => {
                     <Button size='small' variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                 </CardActions>
             </Card>
-            <Bugs project_id={_id} />
-            <SelectedBug />
+            <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
+                <Bugs project_id={_id} />
+                <SelectedBug />
+            </Box>
         </>
     )
 }

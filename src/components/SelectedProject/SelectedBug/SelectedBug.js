@@ -1,19 +1,39 @@
 import React from 'react'
-import { Card, CardContent, CardActions, Typography, Button, Chip } from '@mui/material'
+import { Card, CardContent, CardActions, Typography, Button, Chip, Divider, Box } from '@mui/material'
 import { useSelector } from 'react-redux'
 
 const SelectedBug = () => {
     const {title, detail, status, priority} = useSelector((state) => state.selectedBug);
     return (
-        <Card sx={{maxWidth: 650, mt: 2, display: title ? '' : 'none'}}>
+        <Card sx={{maxWidth: 500, mt: 2}}>
+            <Typography sx={{fontSize: 14, fontWeight: 700, m: 1}}>Selected Bug Info</Typography>
+            <Divider />
             <CardContent>
-                <Typography gutterBottom> {title} </Typography>
-                <Typography> {detail} </Typography>
-                {status ? <Chip label={status} variant='outlined' color='error' /> : null}
-                {priority ? <Chip label={priority} variant='outlined' color='primary' /> : null}
+                {title ? 
+                    <Box>
+                        <Box sx={{m: 2}}>
+                            <Typography gutterBottom sx={{fontSize: 12, fontWeight: 700, color: 'text.secondary'}} > TICKET TITLE </Typography>
+                            <Typography gutterBottom color='text.secondary'> {title} </Typography>
+                            <Typography gutterBottom sx={{fontSize: 12, fontWeight: 'bold', color: 'text.secondary'}} > DETAIL </Typography>
+                            <Typography color='text.secondary'> {detail} </Typography>
+                        </Box>
+                        <Box sx={{display: 'flex', m: 2}}>
+                            {status && <Box sx={{mr: 1}}>
+                            <Typography gutterBottom sx={{fontSize: 12, fontWeight: 600, color: 'text.secondary'}}> STATUS </Typography>
+                            <Chip label={status} variant='outlined' sx={{mr: 1}} />
+                            </Box>}
+                            {priority && <Box >
+                            <Typography gutterBottom sx={{fontSize: 12, fontWeight: 600, color: 'text.secondary'}} > PRIORITY </Typography>
+                            <Chip label={priority} variant='outlined' color='error' />
+                            </Box>}
+                        </Box>
+                    </Box> :
+                    <Typography>No Bug Selected</Typography>
+                }
             </CardContent>
             <CardActions>
-                <Button size='small'>Update</Button>
+                {title && <Button size='small' variant='outlined'>Update</Button>}
+                {title && <Button size='small' variant='outlined' color='error'>Delete</Button>}
             </CardActions>
         </Card>
     )
