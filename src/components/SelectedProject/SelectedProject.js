@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProjects, selectProject } from '../../actions/projects';
 import UpdateProject from './UpdateProject/UpdateProject';
 import Bugs from './BugsByProject/Bugs';
+import SelectedBug from './SelectedBug/SelectedBug';
 
 const SelectedProject = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const SelectedProject = () => {
     // reset selectedProject state into an empty object when returning on projects page
     const handleReturnHome = () => {
         dispatch({type: 'RESET'});
+        dispatch({type: 'RESET_SELECT_BUG'});
         dispatch(getProjects());
     }
 
@@ -35,7 +37,8 @@ const SelectedProject = () => {
                     <Button size='small' variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                 </CardActions>
             </Card>
-            <Bugs id={_id} />
+            <Bugs project_id={_id} />
+            <SelectedBug />
         </>
     )
 }

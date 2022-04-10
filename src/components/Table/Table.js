@@ -26,7 +26,7 @@ export default function BasicTable() {
             </TableHead>
             <TableBody>
               {projects.map(({_id, title, createdAt, bugs}) => (
-                <TableRow key={_id} hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableRow key={_id} hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                   <TableCell component="th" scope="row"> {title} </TableCell>
                   <TableCell align="left">{createdAt}</TableCell>
                   <TableCell align="left">Ongoing</TableCell>
