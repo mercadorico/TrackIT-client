@@ -40,3 +40,13 @@ export const selectBug = (project_id, id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const updateBug = (project_id, id, updatedBug) => async (dispatch) => {
+    try {
+        const { data } = await api.updateBug(project_id, id, updatedBug);
+
+        dispatch({type: 'UPDATE_BUG', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

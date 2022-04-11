@@ -1,7 +1,8 @@
 import React from 'react'
-import { Card, CardContent, CardActions, Typography, Button, Chip, Divider, Box } from '@mui/material'
+import { Card, CardContent, CardActions, Typography, Chip, Divider, Box } from '@mui/material'
 import { useSelector } from 'react-redux'
 import DeleteBug from './UpdateBug/DeleteBug';
+import UpdateBug from './UpdateBug/UpdateBug';
 
 const SelectedBug = ({project_id}) => {
     const {_id, title, detail, status, priority} = useSelector((state) => state.selectedBug);
@@ -34,7 +35,7 @@ const SelectedBug = ({project_id}) => {
                 }
             </CardContent>
             <CardActions>
-                {title && <Button size='small' variant='outlined'>Update</Button>}
+                {title && <UpdateBug project_id={project_id} id={_id} title={title} detail={detail} status={status} priority={priority} /> }
                 {title && <DeleteBug project_id={project_id} id={_id} />}
             </CardActions>
         </Card>

@@ -1,9 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { updateBug } from '../../../../actions/bugs';
 
-const UpdateBug = () => {
+const UpdateBug = ({title, detail, status, priority, project_id, id}) => {
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const [bugUpdate, setBugUpdate] = useState({title: '', detail: '', status: '', priority: ''});
+
+  const handleClickOpen = () => {
+    setOpen(true)
+    setBugUpdate({title: title, detail: detail, status: status, priority: priority})
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
+  const handleStatusChange = (event) => {
+      setBugUpdate({...bugUpdate, status: event.target.value});
+  };
+
+  const handlePriorityChange = (event) => {
+      setBugUpdate({...bugUpdate, priority: event.target.value});
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(updateBug(project_id, id, bugUpdate));
+  }
+
   return (
-    <div>UpdateBug</div>
+    <>
+      <Button size='small' variant='outlined' onClick={handleClickOpen} sx={{mr: 1}}>
+        EDIT
+      </Button>
+      <Dialog open={open} onClose={handleClose} fullWidth >
+        <DialogTitle>Edit Bug Info</DialogTitle>
+        <form autoComplete='off' onSubmit={handleSubmit}>
+          <DialogContent>
+            <TextField required name='title' type='text' label='Title' fullWidth autoFocus sx={{mb: 2}} size='small' value={bugUpdate.title}
+                onChange={(e) => setBugUpdate({...bugUpdate, title: e.target.value})}> 
+            </TextField>
+            <TextField required name='detail' type='text' label='Write Detail' fullWidth multiline minRows={3} maxRows={6} sx={{mb: 2}} value={bugUpdate.detail}
+                onChange={(e) => setBugUpdate({...bugUpdate, detail: e.target.value})} > 
+            </TextField>
+
+            <FormControl sx={{minWidth: 130}} size='small'>
+                <InputLabel id='status-select-label'>Status</InputLabel>
+                <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty value={bugUpdate.status}
+                    onChange={handleStatusChange}> 
+                    <MenuItem value='Open'>Open</MenuItem>
+                    <MenuItem value='Closed'>Closed</MenuItem>
+                    <MenuItem value='In-Progress'>In Progress</MenuItem>
+                    <MenuItem value='Resolved'>Resolved</MenuItem>
+                </Select>
+            </FormControl>
+            <FormControl sx={{minWidth: 130}} size='small'>
+                <InputLabel id='priority-select-label'>Priority</InputLabel>
+                <Select name='priority' label='Priority' id='priority-select' labelId='priority-select-label' displayEmpty value={bugUpdate.priority}
+                    onChange={handlePriorityChange}>
+                        <MenuItem value='Low'>Low</MenuItem>
+                        <MenuItem value='Medium'>Medium</MenuItem>
+                        <MenuItem value='High'>High</MenuItem>
+                        <MenuItem value='Immediate'>Immediate</MenuItem>
+                </Select>
+             </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} >Cancel</Button>
+            <Button onClick={handleClose} type='submit' >Sumbit</Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+    </>
   )
 }
 
-export default UpdateBug
+export default UpdateBug;
