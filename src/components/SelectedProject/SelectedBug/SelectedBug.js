@@ -1,9 +1,11 @@
 import React from 'react'
 import { Card, CardContent, CardActions, Typography, Button, Chip, Divider, Box } from '@mui/material'
 import { useSelector } from 'react-redux'
+import DeleteBug from './UpdateBug/DeleteBug';
 
-const SelectedBug = () => {
-    const {title, detail, status, priority} = useSelector((state) => state.selectedBug);
+const SelectedBug = ({project_id}) => {
+    const {_id, title, detail, status, priority} = useSelector((state) => state.selectedBug);
+    
     return (
         <Card sx={{maxWidth: 500, mt: 2}}>
             <Typography sx={{fontSize: 14, fontWeight: 700, m: 1}}>Selected Bug Info</Typography>
@@ -33,7 +35,7 @@ const SelectedBug = () => {
             </CardContent>
             <CardActions>
                 {title && <Button size='small' variant='outlined'>Update</Button>}
-                {title && <Button size='small' variant='outlined' color='error'>Delete</Button>}
+                {title && <DeleteBug project_id={project_id} id={_id} />}
             </CardActions>
         </Card>
     )

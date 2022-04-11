@@ -21,6 +21,16 @@ export const reportBug = (id, newBug) => async (dispatch) => {
     }
 }
 
+export const deleteBug = (project_id, id) => async (dispatch) => {
+    try {
+        await api.deleteBug(project_id, id);
+
+        dispatch({type: 'DELETE_BUG', payload: id});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const selectBug = (project_id, id) => async (dispatch) => {
     try {
         const { data } = await api.selectBug(project_id, id);

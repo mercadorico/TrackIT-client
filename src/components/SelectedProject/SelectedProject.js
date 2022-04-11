@@ -39,7 +39,7 @@ const SelectedProject = () => {
             </Card>
             <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
                 <Bugs project_id={_id} />
-                <SelectedBug />
+                <SelectedBug project_id={_id} />
             </Box>
         </>
     )
