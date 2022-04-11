@@ -13,7 +13,7 @@ const Bugs = ({project_id}) => {
 
     useEffect(() => {
         dispatch(fetchBugs(project_id));
-    }, [dispatch, project_id]);
+    }, [dispatch, project_id, bugs]);
 
     const handleClick = (project_id, id) => {
         dispatch(selectBug(project_id, id));
