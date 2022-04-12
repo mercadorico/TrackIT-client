@@ -16,10 +16,10 @@ export default function BasicTable() {
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 450 }} aria-label="simple table">
             <TableHead>
-              <TableRow >
+              <TableRow sx={{bgcolor: 'primary.main'}}>
                 {tableHeader.map((item) => (
-                  <TableCell key={item}>
-                    <Typography variant='subtitle1'>{item}</Typography>
+                  <TableCell key={item} size='small'>
+                    <Typography variant='subtitle2' color='primary.contrastText'>{item}</Typography>
                   </TableCell>           
                 ))}
               </TableRow>
