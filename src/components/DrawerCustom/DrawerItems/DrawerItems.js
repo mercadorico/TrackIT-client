@@ -21,19 +21,8 @@ const Drawer = (props) => {
             </Toolbar>
             <Divider />
             <List>
-                {['Projects', 'Add Project', 'Bugs', 'Report Bug'].map((text, index) => (
+                {['Projects', 'My Project', 'Bugs', 'Report Bug'].map((text, index) => (
                 <ListItem button key={text} onClick={props.handleDrawerToggle}>
-                    <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Deleted'].map((text, index) => (
-                <ListItem button key={text}>
                     <ListItemIcon>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>

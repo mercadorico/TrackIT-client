@@ -6,6 +6,8 @@ const bugsReducer = (bugs = [], action) => {
             return [...bugs, action.payload];
         case 'DELETE_BUG':
             return bugs.filter((bug) => bug._id !== action.payload );
+        case 'RESET_BUG_LIST':
+            return [];
         default:
             return bugs;
     }

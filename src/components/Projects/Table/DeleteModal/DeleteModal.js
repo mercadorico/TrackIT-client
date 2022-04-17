@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IconButton, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { deleteProject } from '../../../actions/projects'
+import { deleteProject } from '../../../../actions/projects'
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const DeleteModal = ({id}) => {

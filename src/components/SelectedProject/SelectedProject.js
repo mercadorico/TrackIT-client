@@ -16,6 +16,7 @@ const SelectedProject = () => {
     const handleReturnHome = () => {
         dispatch({type: 'RESET'});
         dispatch({type: 'RESET_SELECT_BUG'});
+        dispatch({type: 'RESET_BUG_LIST'});
         dispatch(getProjects());
     }
 

@@ -4,7 +4,7 @@ import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, Ta
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteModal from './DeleteModal/DeleteModal';
-import { selectProject } from '../../actions/projects';
+import { selectProject } from '../../../actions/projects';
 
 export default function BasicTable() {
     const dispatch = useDispatch();
