@@ -48,7 +48,7 @@ const ReportBug = ({id}) => {
 
                         <FormControl sx={{minWidth: 130}} size='small'>
                             <InputLabel id='status-select-label'>Status</InputLabel>
-                            <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty
+                            <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty value={bug.status}
                                 onChange={handleStatusChange}> 
                                 <MenuItem value='Open'>Open</MenuItem>
                                 <MenuItem value='Closed'>Closed</MenuItem>
@@ -58,7 +58,7 @@ const ReportBug = ({id}) => {
                         </FormControl>
                         <FormControl sx={{minWidth: 130}} size='small'>
                             <InputLabel id='priority-select-label'>Priority</InputLabel>
-                            <Select name='priority' label='Priority' id='priority-select' labelId='priority-select-label' displayEmpty
+                            <Select name='priority' label='Priority' id='priority-select' labelId='priority-select-label' displayEmpty value={bug.priority}
                                 onChange={handlePriorityChange}>
                                     <MenuItem value='Low'>Low</MenuItem>
                                     <MenuItem value='Medium'>Medium</MenuItem>

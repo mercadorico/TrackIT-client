@@ -6,7 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
-import { Toolbar, Typography } from '@mui/material';
+import { Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Drawer = (props) => {
     const date = new Date();
@@ -29,6 +30,9 @@ const Drawer = (props) => {
                     <ListItemText primary={text} />
                 </ListItem>
                 ))}
+                <ListItem>
+                    <Button component={Link} to='/auth' variant='outlined' fullWidth>Logout</Button>
+                </ListItem>
             </List>
         </>
     )
