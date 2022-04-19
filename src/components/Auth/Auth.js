@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Paper, Typography, Grid, Button, Avatar, Toolbar } from '@mui/material';
 import Input from './Input';
 import PestControlOutlinedIcon from '@mui/icons-material/PestControlOutlined';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { signup, signin } from '../../actions/auth';
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
-  const [formData, setFormData] = useState({firstName: '', lastName: '', email: '', password: '', confirmPassword: ''});
+  const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // redirect to home if already logged in.
+  useEffect(() => {
+    if(localStorage.getItem('profile')) {
+      navigate('/');
+    }
+  });
 
   const handleShowPassword = () => setShowPassword((prevState) => !prevState);
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(isSignup) {
+      dispatch(signup(formData, navigate));
+    } else {
+      dispatch(signin(formData, navigate));
+    }
   }
 
   const handleChange = (event) => {
@@ -21,6 +39,7 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsSignup((prevState) => !prevState); 
+    setFormData(initialState);
     setShowPassword(false);
   }
 

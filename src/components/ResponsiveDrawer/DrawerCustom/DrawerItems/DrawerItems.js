@@ -1,17 +1,23 @@
 import React from 'react'
-import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import { Divider, List, ListItem, ListItemText} from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import { Toolbar, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 
 const Drawer = (props) => {
     const date = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        dispatch({type: 'LOGOUT'});
+        navigate('/auth');
+    }
 
     return (
         <>
@@ -31,7 +37,7 @@ const Drawer = (props) => {
                 </ListItem>
                 ))}
                 <ListItem>
-                    <Button component={Link} to='/auth' variant='outlined' fullWidth>Logout</Button>
+                    <Button onClick={logout} variant='outlined' fullWidth>Logout</Button>
                 </ListItem>
             </List>
         </>
