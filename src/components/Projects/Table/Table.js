@@ -9,7 +9,7 @@ import { selectProject } from '../../../actions/projects';
 export default function BasicTable() {
     const dispatch = useDispatch();
     const projects = useSelector((state) => state.projects);
-    const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'STATUS', 'ISSUES', 'ACTIONS']
+    const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'STATUS', 'ISSUES', 'ACTIONS'];
 
     console.log(projects);
     return (

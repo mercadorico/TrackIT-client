@@ -5,14 +5,19 @@ import AddProject from './AddProject/AddProject';
 import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
 
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getProjects } from '../../actions/projects';
 
 const Projects = ({drawerWidth}) => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(getProjects());
+      if(localStorage.getItem('profile')) {
+        dispatch(getProjects());
+      } else {
+        navigate('/auth');
+      }
   }, [dispatch]);
 
   return (
