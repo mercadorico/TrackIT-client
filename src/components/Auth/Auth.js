@@ -19,7 +19,7 @@ const Auth = () => {
     if(localStorage.getItem('profile')) {
       navigate('/');
     }
-  });
+  },[dispatch]);
 
   const handleShowPassword = () => setShowPassword((prevState) => !prevState);
 
