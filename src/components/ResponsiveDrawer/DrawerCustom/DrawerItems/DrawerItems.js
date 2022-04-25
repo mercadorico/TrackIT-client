@@ -16,6 +16,7 @@ const Drawer = (props) => {
 
     const logout = () => {
         dispatch({type: 'LOGOUT'});
+        dispatch({type: 'RESET_ERROR'});
         navigate('/auth');
     }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Paper, Typography, Grid, Button, Avatar, Toolbar } from '@mui/material';
 import Input from './Input';
 import PestControlOutlinedIcon from '@mui/icons-material/PestControlOutlined';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signup, signin } from '../../actions/auth';
 
@@ -13,13 +13,14 @@ const Auth = () => {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const authError = useSelector(state => state.authErrorMessage);
 
   // redirect to home if already logged in.
   useEffect(() => {
     if(localStorage.getItem('profile')) {
       navigate('/');
     }
-  },[dispatch]);
+  },[dispatch, navigate]);
 
   const handleShowPassword = () => setShowPassword((prevState) => !prevState);
 
@@ -34,7 +35,9 @@ const Auth = () => {
 
   const handleChange = (event) => {
     //square bracket was used for event.target.name since you cannot directly use a binding-value(variable value in js) as a key in object
-    setFormData({...formData, [event.target.name]: event.target.value})
+    setFormData({...formData, [event.target.name]: event.target.value});
+    // reset error reducer
+    dispatch({type: 'RESET_ERROR'});
   }
 
   const switchMode = () => {
@@ -68,6 +71,7 @@ const Auth = () => {
                   </Button>
                   <Grid container justifyContent='center'>
                     <Grid item>
+                      {authError && <Typography gutterBottom align='center' color='warning.dark' >{authError}</Typography> }
                       <Button onClick={switchMode}>
                         {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
                       </Button>

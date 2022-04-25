@@ -18,7 +18,7 @@ const Projects = ({drawerWidth}) => {
       } else {
         navigate('/auth');
       }
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <>

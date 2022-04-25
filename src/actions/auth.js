@@ -10,7 +10,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
         navigate('/');
     } catch (error) {
         console.log(error);
-        alert('Wrong email or password.')
+        dispatch({type: 'ERROR', data: error.response.data.message})
     }
 }
 
@@ -23,5 +23,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
         navigate('/');
     } catch (error) {
         console.log(error);
+        dispatch({type: 'ERROR', data: error.response.data.message})
     }
 }
