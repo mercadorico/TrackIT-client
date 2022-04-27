@@ -10,8 +10,10 @@ import SelectedBug from './SelectedBug/SelectedBug';
 
 const SelectedProject = ({drawerWidth}) => {
     const dispatch = useDispatch();
-    const {_id, title, description} = useSelector((state) => state.selectedProject);
+    const {_id, title, description, author} = useSelector((state) => state.selectedProject);
     const param = useParams();
+
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     // reset selectedProject state into an empty object when returning on projects page
     const handleReturnHome = () => {
@@ -36,13 +38,13 @@ const SelectedProject = ({drawerWidth}) => {
                         <Typography variant='body2'>{description}</Typography>
                     </CardContent>
                     <CardActions >
-                        <UpdateProject id={_id} title={title} description={description} />
+                        {author === user?.result?._id && <UpdateProject id={_id} title={title} description={description} />}
                         <Button size='small' variant='outlined' component={Link} to='/' onClick={() => handleReturnHome()}>HOME</Button>
                     </CardActions>
                 </Card>
                 <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
-                    <Bugs project_id={_id} />
-                    <SelectedBug project_id={_id} />
+                    <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />
+                    <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />
                 </Box>
             </Box>
         </>

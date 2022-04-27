@@ -11,7 +11,9 @@ export default function BasicTable() {
     const projects = useSelector((state) => state.projects);
     const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'STATUS', 'ISSUES', 'ACTIONS'];
 
-    console.log(projects);
+    // contains user information from local storage
+    const user = JSON.parse(localStorage.getItem('profile'));
+    
     return (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 450 }} aria-label="simple table">
@@ -25,7 +27,7 @@ export default function BasicTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {projects.map(({_id, title, createdAt, bugs}) => (
+              {projects.map(({_id, title, createdAt, author}) => (
                 <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                   <TableCell component="th" scope="row"> {title} </TableCell>
                   <TableCell align="left">{createdAt}</TableCell>
@@ -37,7 +39,7 @@ export default function BasicTable() {
                           <EditIcon />
                       </IconButton> 
                     </Tooltip>
-                    <DeleteModal id={_id} />
+                    {author === user?.result?._id && <DeleteModal id={_id} />}
                   </TableCell>
                 </TableRow>
               ))}

@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import myTheme from './styles.js';
 import ReportBug from './ReportBug/ReportBug';
 
-const Bugs = ({project_id}) => {
+const Bugs = ({project_id, authorId, currentUserId}) => {
     const dispatch = useDispatch();
     const bugs = useSelector((state) => state.bugs);
     const [selectedID, setSelectedID] = useState('');
@@ -28,7 +28,7 @@ const Bugs = ({project_id}) => {
                         <Typography>No Bugs Listed Yet</Typography>
                     </CardContent>
                     <CardActions>
-                        <ReportBug id={project_id} />
+                        {authorId === currentUserId && <ReportBug id={project_id} />}
                     </CardActions>
                 </Card> : 
                 <TableContainer component={Paper} sx={{ maxWidth: 500, mt: 2 }}>
@@ -37,7 +37,7 @@ const Bugs = ({project_id}) => {
                         <TableRow >
                             <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} size='small'>
                                 <Typography sx={{fontSize: 14, fontWeight: 700}} >Bug List</Typography>
-                                <ReportBug id={project_id} />
+                                {authorId === currentUserId && <ReportBug id={project_id} />}
                             </TableCell>
                         </TableRow>
                         <TableRow sx={{bgcolor: 'myColor.customBackground'}}>

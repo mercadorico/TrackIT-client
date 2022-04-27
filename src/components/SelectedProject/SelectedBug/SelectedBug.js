@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import DeleteBug from './UpdateBug/DeleteBug';
 import UpdateBug from './UpdateBug/UpdateBug';
 
-const SelectedBug = ({project_id}) => {
+const SelectedBug = ({project_id, authorId, currentUserId}) => {
     const {_id, title, detail, status, priority} = useSelector((state) => state.selectedBug);
     
     return (
@@ -35,8 +35,8 @@ const SelectedBug = ({project_id}) => {
                 }
             </CardContent>
             <CardActions>
-                {title && <UpdateBug project_id={project_id} id={_id} title={title} detail={detail} status={status} priority={priority} /> }
-                {title && <DeleteBug project_id={project_id} id={_id} />}
+                {authorId === currentUserId && <UpdateBug project_id={project_id} id={_id} title={title} detail={detail} status={status} priority={priority} /> }
+                {authorId === currentUserId && <DeleteBug project_id={project_id} id={_id} />}
             </CardActions>
         </Card>
     )
