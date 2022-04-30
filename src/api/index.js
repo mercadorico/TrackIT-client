@@ -9,7 +9,15 @@ API.interceptors.request.use((req) => {
     }
 
     return req;
+}, (error) => {
+    return Promise.reject(error);
 })
+
+API.interceptors.response.use((res) => {
+    return res;
+}, (error) => {
+    return Promise.reject(error);
+});
 
 export const fetchProjects = () => API.get('/projects');
 export const createProject = (newProject) => API.post('/projects', newProject);

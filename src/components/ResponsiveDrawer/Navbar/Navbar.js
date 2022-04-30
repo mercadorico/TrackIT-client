@@ -9,7 +9,13 @@ const Navbar = ({drawerWidth, handleDrawerToggle}) => {
                      ];
 
     const user = JSON.parse(localStorage.getItem('profile'));
-    const name = user?.result?.name;
+
+    let name = '';
+
+    if(user) {
+        name = user?.result?.name;
+    }
+
 
     // split name and get first letter of each string.
     const splitName = name.split(' ').map((item) => item.charAt(0));

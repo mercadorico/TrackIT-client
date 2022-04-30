@@ -13,8 +13,8 @@ const App = () => {
     return (
             <Box sx = {{display: 'flex'}}>    
                     <Routes>
-                        <Route path='/' element={<Projects drawerWidth={drawerWidth} />}/>
                         <Route path='/auth' element={<Auth />}/>
+                        <Route path='/' element={<Projects drawerWidth={drawerWidth} />}/>
                         <Route path='/projects/:id' element={<SelectedProject drawerWidth={drawerWidth} />} />
                     </Routes>    
             </Box>   

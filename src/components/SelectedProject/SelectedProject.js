@@ -43,7 +43,7 @@ const SelectedProject = ({drawerWidth}) => {
                     </CardActions>
                 </Card>
                 <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
-                    <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />
+                    {_id && <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />}
                     <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />
                 </Box>
             </Box>
