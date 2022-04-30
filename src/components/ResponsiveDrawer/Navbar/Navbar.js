@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { Typography, AppBar, Toolbar, IconButton, Divider, Box, Avatar } from '@mui/material';
+import Logo from '../../../assets/TrackIT2.svg'
 
 const Navbar = ({drawerWidth, handleDrawerToggle}) => {
     const [appbar, iconbutton] = [
@@ -27,9 +28,7 @@ const Navbar = ({drawerWidth, handleDrawerToggle}) => {
                 <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={iconbutton}>
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h5" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }}>
-                    Issue Tracker App
-                </Typography>
+                    <img src={Logo} alt="TrackIT" />
                 <Box sx={{display: 'flex', flexGrow: 1, justifyContent: 'end', boxSizing: 'border-box', pr: 5}}>
                     <Avatar sx={{bgcolor: 'primary.main', width: 36, height: 36, mr: 1}}>
                         <Typography variant='subtitle1'>{firstLetters}</Typography>
