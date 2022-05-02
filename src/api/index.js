@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../index.js';
 
 // const API = axios.create({ baseURL: 'http://localhost:5000' });
 const API = axios.create({ baseURL: 'https://track-bug.herokuapp.com' });
@@ -8,14 +9,22 @@ API.interceptors.request.use((req) => {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
     }
 
+    // increment loading state every request
+    store.dispatch({type: 'LOADING'});
+
     return req;
 }, (error) => {
+    store.dispatch({type: 'LOADING'});
     return Promise.reject(error);
 })
 
 API.interceptors.response.use((res) => {
-    return res;
+    // increment loading state every request
+    store.dispatch({type: 'LOADED'});
+
+    return res
 }, (error) => {
+    store.dispatch({type: 'LOADED'});
     return Promise.reject(error);
 });
 

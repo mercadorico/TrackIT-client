@@ -6,5 +6,6 @@ import bugs from './bugs';
 import selectedBug from "./selectedbug";
 import auth from "./auth";
 import authErrorMessage from "./authErrorMessage";
+import loadingReducer from './loading'
 
-export default combineReducers({ projects, selectedProject, bugs, selectedBug, auth, authErrorMessage });
+export default combineReducers({ projects, selectedProject, bugs, selectedBug, auth, authErrorMessage, loadingReducer });
