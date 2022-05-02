@@ -11,7 +11,7 @@ API.interceptors.request.use((req) => {
 
     // increment loading state every request
     store.dispatch({type: 'LOADING'});
-
+    
     return req;
 }, (error) => {
     store.dispatch({type: 'LOADING'});
