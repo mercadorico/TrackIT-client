@@ -9,14 +9,14 @@ import { selectProject } from '../../../actions/projects';
 export default function BasicTable() {
     const dispatch = useDispatch();
     const projects = useSelector((state) => state.projects);
-    const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'STATUS', 'ISSUES', 'ACTIONS'];
+    const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'ACTIONS'];
 
     // contains user information from local storage
     const user = JSON.parse(localStorage.getItem('profile'));
     
     return (
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 450 }} aria-label="simple table">
+          <Table sx={{ minWidth: 350 }} aria-label="simple table">
             <TableHead>
               <TableRow sx={{bgcolor: 'primary.main'}}>
                 {tableHeader.map((item) => (
@@ -31,8 +31,6 @@ export default function BasicTable() {
                 <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                   <TableCell component="th" scope="row"> {title} </TableCell>
                   <TableCell align="left">{createdAt}</TableCell>
-                  <TableCell align="left">Ongoing</TableCell>
-                  <TableCell align="left">1</TableCell>
                   <TableCell align="left">
                     <Tooltip title='View'>
                       <IconButton component={Link} to={`projects/${_id}`} color='inherit' size='small' sx={{mr: 1}} onClick={() => dispatch(selectProject(_id))} >
