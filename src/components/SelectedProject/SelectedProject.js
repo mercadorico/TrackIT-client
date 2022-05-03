@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box } from '@mui/material'
+import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box, CircularProgress } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProject } from '../../actions/projects';
 import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
@@ -12,6 +12,8 @@ const SelectedProject = ({drawerWidth}) => {
     const dispatch = useDispatch();
     const {_id, title, description, author} = useSelector((state) => state.selectedProject);
     const param = useParams();
+    const loading = useSelector(state => state.loadingReducer);
+    console.log(loading);
 
     const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -43,8 +45,8 @@ const SelectedProject = ({drawerWidth}) => {
                     </CardActions>
                 </Card>
                 <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
-                    {_id && <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />}
-                    <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />
+                    <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />
+                    {loading ? <CircularProgress/> : <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />}
                 </Box>
             </Box>
         </>

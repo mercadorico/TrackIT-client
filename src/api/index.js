@@ -34,7 +34,7 @@ export const deleteProject = (id) => API.delete(`/projects/${id}`);
 export const selectProject = (id) => API.get(`/projects/${id}`);
 export const updateProject = (id, project) => API.patch(`/projects/${id}`, project);
 
-export const fetchBugsByProject = (id) => API.get(`/projects/${id}/bugs`);
+export const fetchBugsByProject = (project_id) => API.get(`/projects/${project_id}/bugs`);
 export const reportBug = (id, newBug) => API.post(`/projects/${id}/bugs`, newBug);
 export const selectBug = (project_id, id) => API.get(`/projects/${project_id}/bugs/${id}`);
 export const deleteBug = (project_id, id) => API.delete(`/projects/${project_id}/bugs/${id}`);

@@ -1,9 +1,9 @@
 import * as api from '../api';
 
 // Async Action Creators
-export const fetchBugs = (id) => async (dispatch) => {
+export const fetchBugs = (project_id) => async (dispatch) => {
     try {
-        const { data } = await api.fetchBugsByProject(id);
+        const { data } = await api.fetchBugsByProject(project_id);
 
         dispatch({type: 'GET_BUGS_BY_PROJECT', payload: data});
     } catch (error) {
