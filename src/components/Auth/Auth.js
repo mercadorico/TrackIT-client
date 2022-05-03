@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Paper, Typography, Grid, Button, Avatar, CircularProgress } from '@mui/material';
+import { Container, Paper, Typography, Grid, Button, Avatar, CircularProgress, Box } from '@mui/material';
 import Input from './Input';
 import PestControlOutlinedIcon from '@mui/icons-material/PestControlOutlined';
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,8 +58,9 @@ const Auth = () => {
 
   return (
     <> 
+      <Box sx={{position: 'absolute', minWidth: '100%', minHeight: '100%', zIndex: -1, background: 'linear-gradient(to right, #004ff9, #fff94c)'}}></Box>
       <Container component='main' maxWidth='xs'>
-          <Paper sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2}}>
+          <Paper sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2, mt: 5}}>
               <Avatar sx={{bgcolor: 'primary.main', m: 1}}>
                   <PestControlOutlinedIcon />
               </Avatar>
