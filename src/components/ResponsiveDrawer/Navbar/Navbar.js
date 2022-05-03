@@ -27,7 +27,7 @@ const Navbar = ({drawerWidth, handleDrawerToggle}) => {
                 <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={iconbutton}>
                     <MenuIcon />
                 </IconButton>
-                <Box sx={{display: 'flex', flexGrow: 1, justifyContent: 'end', boxSizing: 'border-box', pr: 5}}>
+                <Box sx={{display: 'flex', flexGrow: 1, justifyContent: 'end', boxSizing: 'border-box', pr: {sm: 5, xs: 1}}}>
                     <Avatar sx={{bgcolor: 'primary.main', width: {sm: 36, xs: 27}, height: {sm: 36, xs: 27}, mr: 1}}>
                         <Typography sx={{fontSize: {sm: 18, xs: 14}}}>{firstLetters}</Typography>
                     </Avatar>
