@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box, CircularProgress } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProject } from '../../actions/projects';
+import { fetchBugs } from '../../actions/bugs';
 import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
 import UpdateProject from './UpdateProject/UpdateProject';
 import Bugs from './BugsByProject/Bugs';
@@ -27,6 +28,7 @@ const SelectedProject = ({drawerWidth}) => {
     // fetch selected project when page is refreshed and state.selectedProject is reset into an empty object.
     useEffect(() => {
         dispatch(selectProject(param.id));
+        dispatch(fetchBugs(param.id));
     }, [param.id, dispatch]);
 
     return (
@@ -34,6 +36,7 @@ const SelectedProject = ({drawerWidth}) => {
             <ResponsiveDrawer />
             <Box component="main" sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` }}}>
                 <Toolbar />
+                {loading ? <CircularProgress/> : <>
                 <Card sx={{maxWidth: 500}} >
                     <CardContent>
                         <Typography variant='h6' gutterBottom>{title}</Typography>
@@ -46,8 +49,9 @@ const SelectedProject = ({drawerWidth}) => {
                 </Card>
                 <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 5, flexWrap: 'wrap'}}>
                     <Bugs project_id={_id} authorId={author} currentUserId={user?.result?._id} />
-                    {loading ? <CircularProgress/> : <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />}
+                    <SelectedBug project_id={_id} authorId={author} currentUserId={user?.result?._id} />
                 </Box>
+                </>}
             </Box>
         </>
     )

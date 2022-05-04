@@ -35,8 +35,8 @@ const SelectedBug = ({project_id, authorId, currentUserId}) => {
                 }
             </CardContent>
             <CardActions>
-                {authorId === currentUserId && <UpdateBug project_id={project_id} id={_id} title={title} detail={detail} status={status} priority={priority} /> }
-                {authorId === currentUserId && <DeleteBug project_id={project_id} id={_id} />}
+                {(authorId === currentUserId && title) && <UpdateBug project_id={project_id} id={_id} title={title} detail={detail} status={status} priority={priority} /> }
+                {(authorId === currentUserId && title) && <DeleteBug project_id={project_id} id={_id} />}
             </CardActions>
         </Card>
     )

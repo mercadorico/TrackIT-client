@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBugs, selectBug } from '../../../actions/bugs';
+import { selectBug } from '../../../actions/bugs';
 import { ThemeProvider } from '@mui/material/styles';
 import myTheme from './styles.js';
 import ReportBug from './ReportBug/ReportBug';
@@ -10,10 +10,6 @@ const Bugs = ({project_id, authorId, currentUserId}) => {
     const dispatch = useDispatch();
     const bugs = useSelector((state) => state.bugs);
     const [selectedID, setSelectedID] = useState('');
-
-    useEffect(() => {
-        dispatch(fetchBugs(project_id));
-    }, [dispatch, project_id]);
 
     const handleClick = (project_id, id) => {
         dispatch(selectBug(project_id, id));
