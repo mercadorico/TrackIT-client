@@ -3,14 +3,14 @@ import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogActions, S
 import { useDispatch } from 'react-redux';
 import { updateBug } from '../../../../actions/bugs';
 
-const UpdateBug = ({title, detail, status, priority, project_id, id}) => {
+const UpdateBug = ({title, detail, status, priority, project_id, id, solution}) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [bugUpdate, setBugUpdate] = useState({title: '', detail: '', status: '', priority: ''});
+  const [bugUpdate, setBugUpdate] = useState({title: '', detail: '', status: '', priority: '', solution: ''});
 
   const handleClickOpen = () => {
     setOpen(true)
-    setBugUpdate({title: title, detail: detail, status: status, priority: priority})
+    setBugUpdate({title: title, detail: detail, status: status, priority: priority, solution: solution})
   }
 
   const handleClose = () => {
@@ -45,6 +45,10 @@ const UpdateBug = ({title, detail, status, priority, project_id, id}) => {
             <TextField required name='detail' type='text' label='Write Detail' fullWidth multiline minRows={3} maxRows={6} sx={{mb: 2}} value={bugUpdate.detail}
                 onChange={(e) => setBugUpdate({...bugUpdate, detail: e.target.value})} > 
             </TextField>
+            {bugUpdate.status === 'Resolved' && 
+              <TextField required name='solution' type='text' label='Write Solution' fullWidth multiline minRows={3} maxRows={6} sx={{mb: 2}} value={bugUpdate.solution}
+                onChange={(e) => setBugUpdate({...bugUpdate, solution: e.target.value})} > 
+              </TextField>}
 
             <FormControl sx={{minWidth: 130}} size='small'>
                 <InputLabel id='status-select-label'>Status</InputLabel>

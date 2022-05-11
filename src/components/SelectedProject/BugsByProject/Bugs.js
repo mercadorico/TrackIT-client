@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions } from '@mui/material';
+import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions, Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBug } from '../../../actions/bugs';
 import { ThemeProvider } from '@mui/material/styles';
 import myTheme from './styles.js';
 import ReportBug from './ReportBug/ReportBug';
+import statusColor from '../statuscolor';
 
 const Bugs = ({project_id, authorId, currentUserId}) => {
     const dispatch = useDispatch();
@@ -30,21 +31,25 @@ const Bugs = ({project_id, authorId, currentUserId}) => {
                 <TableContainer component={Paper} sx={{ maxWidth: 500, mt: 2 }}>
                 <Table aria-label='bugs-table'>
                     <TableHead>
-                        <TableRow >
+                        <TableRow>
                             <TableCell sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} size='small'>
-                                <Typography sx={{fontSize: 14, fontWeight: 700}} >Bug List</Typography>
+                                <Typography sx={{fontSize: 14, fontWeight: 700, lineHeight: 2.2}} >Bug List</Typography>
+                            </TableCell>
+                            <TableCell size='small' padding='none' align='center'>
                                 {authorId === currentUserId && <ReportBug id={project_id} />}
                             </TableCell>
                         </TableRow>
                         <TableRow sx={{bgcolor: 'myColor.customBackground'}}>
                             <TableCell sx={{color: 'myColor.textColor'}} size='small'>TICKET TITLE</TableCell>
+                            <TableCell sx={{color: 'myColor.textColor'}} size='small' align='center'>STATUS</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {bugs.map(({ _id, title }) => (
+                        {bugs.map(({ _id, title, status }) => (
                             <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover selected={selectedID === _id}
                             onClick={() => handleClick(project_id, _id)}>
                                 <TableCell component="th" scope="row"> {title} </TableCell>
+                                <TableCell component="th" scope="row" align='center'> <Chip label={status} variant={status==='Resolved' ? 'filled' : 'outlined'} size='small' color={statusColor(status)} /> </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
