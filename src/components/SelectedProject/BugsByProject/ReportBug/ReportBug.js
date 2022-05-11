@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem, InputLabel, FormControl, IconButton } from '@mui/material'
 import { useDispatch } from 'react-redux';
 import { reportBug } from '../../../../actions/bugs';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const ReportBug = ({id}) => {
     const [bug, setBug] = useState({title: '', detail: '', status: '', priority: ''});
@@ -32,9 +33,9 @@ const ReportBug = ({id}) => {
 
     return (
         <>
-            <Button variant='outlined' size='small' onClick={handleClickOpen}>
-                New Ticket
-            </Button>
+            <IconButton variant='outlined' size='small' onClick={handleClickOpen}>
+                <AddBoxIcon color='primary' />
+            </IconButton>
             <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle>Report a Bug</DialogTitle>
                 <form autoComplete='off' onSubmit={handleSubmit} >
