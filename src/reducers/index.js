@@ -7,5 +7,6 @@ import selectedBug from "./selectedbug";
 import auth from "./auth";
 import authErrorMessage from "./authErrorMessage";
 import loadingReducer from './loading'
+import navState from './navState'
 
-export default combineReducers({ projects, selectedProject, bugs, selectedBug, auth, authErrorMessage, loadingReducer });
+export default combineReducers({ projects, selectedProject, bugs, selectedBug, auth, authErrorMessage, loadingReducer, navState });

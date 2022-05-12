@@ -1,17 +1,25 @@
 import React from 'react'
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { Divider, List, ListItem, ListItemText} from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
+import { Divider, List, ListItemButton, ListItemText, ListItemIcon} from '@mui/material';
 import { Toolbar, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import FolderIcon from '@mui/icons-material/Folder';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Logo from '../../../../assets/TrackIT2.svg'
 
 
 const Drawer = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // navState for active item on drawer
+    const selectedNav = useSelector(state => state.navState)
+
+    const handleListItemClick = (event, actionType) => {
+        props.handleDrawerToggle();
+        dispatch({type: actionType});
+    };
 
     const logout = () => {
         dispatch({type: 'LOGOUT'});
@@ -26,17 +34,27 @@ const Drawer = (props) => {
             </Toolbar>
             <Divider />
             <List>
-                {['Projects', 'My Project', 'Bugs', 'Report Bug'].map((text, index) => (
-                <ListItem button key={text} onClick={props.handleDrawerToggle}>
+                <ListItemButton key='My Projects' selected={selectedNav === 0} onClick={(event) => handleListItemClick(event, 'MY_PROJECTS')}>
                     <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        <FolderSharedIcon />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-                ))}
-                <ListItem>
+                    <ListItemText primary='My Projects' />
+                </ListItemButton>
+                <ListItemButton key='All Projects' selected={selectedNav === 1} onClick={(event) => handleListItemClick(event, 'ALL_PROJECTS')}>
+                    <ListItemIcon>
+                        <FolderIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='All Projects' />
+                </ListItemButton>
+                <ListItemButton key='Account' selected={selectedNav === 2} onClick={(event) => handleListItemClick(event, 'ACCOUNT')}>
+                    <ListItemIcon>
+                        <AccountBoxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Account' />
+                </ListItemButton>
+                <ListItemButton>
                     <Button onClick={logout} variant='outlined' fullWidth>Logout</Button>
-                </ListItem>
+                </ListItemButton>
             </List>
         </>
     )

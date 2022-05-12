@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip  } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteModal from './DeleteModal/DeleteModal';
 import { selectProject } from '../../../actions/projects';
@@ -13,34 +13,45 @@ export default function BasicTable() {
 
     // contains user information from local storage
     const user = JSON.parse(localStorage.getItem('profile'));
-    
+
+    const selectedNav = useSelector(state => state.navState);
+
+    const Row = ({_id, title, createdAt, author}) => {
+      return (
+      <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+        <TableCell component="th" scope="row"> {title} </TableCell>
+        <TableCell sx={{display: {xs: 'none', md: 'table-cell'}}} align="left">{createdAt}</TableCell>
+        <TableCell align="left">
+          <Tooltip title='Open'>
+            <IconButton component={Link} to={`projects/${_id}`} color='inherit' size='small' sx={{mr: 1}} onClick={() => dispatch(selectProject(_id))} >
+                <OpenInNewIcon />
+            </IconButton> 
+          </Tooltip>
+          {author === user?.result?._id && <DeleteModal id={_id} />}
+        </TableCell>
+      </TableRow>
+      )
+    }
+
     return (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 350 }} aria-label="simple table">
             <TableHead>
               <TableRow sx={{bgcolor: 'primary.main'}}>
                 {tableHeader.map((item) => (
-                  <TableCell key={item} size='small'>
+                  <TableCell sx={{display: {xs: item === 'DATE STARTED' && 'none' , md: item === 'DATE STARTED' && 'block'}}} key={item} size='small'>
                     <Typography variant='subtitle2' color='primary.contrastText'>{item}</Typography>
                   </TableCell>           
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {projects.map(({_id, title, createdAt, author}) => (
-                <TableRow key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                  <TableCell component="th" scope="row"> {title} </TableCell>
-                  <TableCell align="left">{createdAt}</TableCell>
-                  <TableCell align="left">
-                    <Tooltip title='View'>
-                      <IconButton component={Link} to={`projects/${_id}`} color='inherit' size='small' sx={{mr: 1}} onClick={() => dispatch(selectProject(_id))} >
-                          <EditIcon />
-                      </IconButton> 
-                    </Tooltip>
-                    {author === user?.result?._id && <DeleteModal id={_id} />}
-                  </TableCell>
-                </TableRow>
-              ))}
+              {projects.map(({_id, title, createdAt, author}) => {
+                if(selectedNav === 0) return author === user?.result?._id && <Row _id={_id} title={title} createdAt={createdAt} author={author} />
+                if(selectedNav === 1) return <Row _id={_id} title={title} createdAt={createdAt} author={author} />
+                if(selectedNav === 2) return <h1>Ongoing Build...</h1>
+                return 'Invalid Condition';
+              })}
             </TableBody>
           </Table>
         </TableContainer>
