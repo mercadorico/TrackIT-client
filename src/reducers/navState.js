@@ -1,11 +1,11 @@
-const navState = (nav = 0,  action) => {
+const navState = (nav = 'My Projects',  action) => {
     switch (action.type) {
         case 'MY_PROJECTS':
-            return 0;
+            return 'My Projects';
         case 'ALL_PROJECTS':
-            return 1;
+            return 'All Projects';
         case 'ACCOUNT':
-            return 2;
+            return 'Account';
         default:
             return nav;
     }

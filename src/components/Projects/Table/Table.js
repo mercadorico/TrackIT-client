@@ -39,7 +39,7 @@ export default function BasicTable() {
             <TableHead>
               <TableRow sx={{bgcolor: 'primary.main'}}>
                 {tableHeader.map((item) => (
-                  <TableCell sx={{display: {xs: item === 'DATE STARTED' && 'none' , md: item === 'DATE STARTED' && 'block'}}} key={item} size='small'>
+                  <TableCell sx={{display: {xs: item === 'DATE STARTED' && 'none' , md: item === 'DATE STARTED' && 'table-cell'}}} key={item} size='small'>
                     <Typography variant='subtitle2' color='primary.contrastText'>{item}</Typography>
                   </TableCell>           
                 ))}
@@ -47,9 +47,9 @@ export default function BasicTable() {
             </TableHead>
             <TableBody>
               {projects.map(({_id, title, createdAt, author}) => {
-                if(selectedNav === 0) return author === user?.result?._id && <Row _id={_id} title={title} createdAt={createdAt} author={author} />
-                if(selectedNav === 1) return <Row _id={_id} title={title} createdAt={createdAt} author={author} />
-                if(selectedNav === 2) return <h1>Ongoing Build...</h1>
+                if(selectedNav === 'My Projects') return author === user?.result?._id && <Row _id={_id} title={title} createdAt={createdAt} author={author} />
+                if(selectedNav === 'All Projects') return <Row _id={_id} title={title} createdAt={createdAt} author={author} />
+                if(selectedNav === 'Account') return <h1>Ongoing Build...</h1>
                 return 'Invalid Condition';
               })}
             </TableBody>

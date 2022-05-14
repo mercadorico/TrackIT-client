@@ -19,6 +19,7 @@ const Drawer = (props) => {
     const handleListItemClick = (event, actionType) => {
         props.handleDrawerToggle();
         dispatch({type: actionType});
+        navigate('/');
     };
 
     const logout = () => {
@@ -34,19 +35,19 @@ const Drawer = (props) => {
             </Toolbar>
             <Divider />
             <List>
-                <ListItemButton key='My Projects' selected={selectedNav === 0} onClick={(event) => handleListItemClick(event, 'MY_PROJECTS')}>
+                <ListItemButton key='My Projects' selected={selectedNav === 'My Projects'} onClick={(event) => handleListItemClick(event, 'MY_PROJECTS')}>
                     <ListItemIcon>
                         <FolderSharedIcon />
                     </ListItemIcon>
                     <ListItemText primary='My Projects' />
                 </ListItemButton>
-                <ListItemButton key='All Projects' selected={selectedNav === 1} onClick={(event) => handleListItemClick(event, 'ALL_PROJECTS')}>
+                <ListItemButton key='All Projects' selected={selectedNav === 'All Projects'} onClick={(event) => handleListItemClick(event, 'ALL_PROJECTS')}>
                     <ListItemIcon>
                         <FolderIcon />
                     </ListItemIcon>
                     <ListItemText primary='All Projects' />
                 </ListItemButton>
-                <ListItemButton key='Account' selected={selectedNav === 2} onClick={(event) => handleListItemClick(event, 'ACCOUNT')}>
+                <ListItemButton key='Account' selected={selectedNav === 'Account'} onClick={(event) => handleListItemClick(event, 'ACCOUNT')}>
                     <ListItemIcon>
                         <AccountBoxIcon />
                     </ListItemIcon>
