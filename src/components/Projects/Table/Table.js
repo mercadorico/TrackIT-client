@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip  } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +8,7 @@ import { selectProject } from '../../../actions/projects';
 
 export default function BasicTable() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const projects = useSelector((state) => state.projects);
     const tableHeader = ['PROJECT NAME', 'DATE STARTED', 'ACTIONS'];
 
@@ -49,7 +50,7 @@ export default function BasicTable() {
               {projects.map(({_id, title, createdAt, author}) => {
                 if(selectedNav === 'My Projects') return author === user?.result?._id && <Row _id={_id} title={title} createdAt={createdAt} author={author} />
                 if(selectedNav === 'All Projects') return <Row _id={_id} title={title} createdAt={createdAt} author={author} />
-                if(selectedNav === 'Account') return <h1>Ongoing Build...</h1>
+                if(selectedNav === 'Account') navigate('/account');
                 return 'Invalid Condition';
               })}
             </TableBody>

@@ -19,12 +19,20 @@ const Drawer = (props) => {
     const handleListItemClick = (event, actionType) => {
         props.handleDrawerToggle();
         dispatch({type: actionType});
-        navigate('/');
+        dispatch({type: 'RESET_SELECT_BUG'});
+
+        if(actionType === 'ACCOUNT') {
+            navigate('/account')
+        } else {
+            navigate('/');
+        }
     };
 
     const logout = () => {
         dispatch({type: 'LOGOUT'});
         dispatch({type: 'RESET_ERROR'});
+        dispatch({type: 'MY_PROJECTS'});
+        dispatch({type: 'RESET_SELECT_BUG'});
         navigate('/auth');
     }
 
@@ -48,10 +56,10 @@ const Drawer = (props) => {
                     <ListItemText primary='All Projects' />
                 </ListItemButton>
                 <ListItemButton key='Account' selected={selectedNav === 'Account'} onClick={(event) => handleListItemClick(event, 'ACCOUNT')}>
-                    <ListItemIcon>
-                        <AccountBoxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Account' />
+                        <ListItemIcon>
+                            <AccountBoxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary='Account' />
                 </ListItemButton>
                 <ListItemButton>
                     <Button onClick={logout} variant='outlined' fullWidth>Logout</Button>
