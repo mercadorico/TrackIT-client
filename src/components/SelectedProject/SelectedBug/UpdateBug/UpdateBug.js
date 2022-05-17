@@ -29,6 +29,9 @@ const UpdateBug = ({title, detail, status, priority, project_id, id, solution}) 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(updateBug(project_id, id, bugUpdate));
+    
+    // UPDATE_STATUS action updates the bugs array after updating a selected bug in order to dynamically update the status in bug list table
+    dispatch({type: 'UPDATE_STATUS', payload: { _id: id, ...bugUpdate}});
   }
 
   return (

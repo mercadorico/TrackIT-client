@@ -6,6 +6,14 @@ const bugsReducer = (bugs = [], action) => {
             return [...bugs, action.payload];
         case 'DELETE_BUG':
             return bugs.filter((bug) => bug._id !== action.payload );
+        case 'UPDATE_STATUS':
+            return bugs.map((bug) => {
+                if(bug._id === action.payload._id) {
+                    return action.payload;
+                } else {
+                    return bug;
+                }
+            });
         case 'RESET_BUG_LIST':
             return [];
         default:
