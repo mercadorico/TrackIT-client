@@ -1,6 +1,6 @@
-import React from 'react'
-import MenuIcon from '@mui/icons-material/Menu';
+import React from 'react';
 import { Typography, AppBar, Toolbar, IconButton, Divider, Box, Avatar } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = ({drawerWidth, handleDrawerToggle}) => {
     const [appbar, iconbutton] = [

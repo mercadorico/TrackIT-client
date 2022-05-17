@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Paper, Typography, Grid, Button, Avatar, CircularProgress, Box } from '@mui/material';
-import Input from './Input';
-import PestControlOutlinedIcon from '@mui/icons-material/PestControlOutlined';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container, Paper, Typography, Grid, Button, Avatar, CircularProgress, Box } from '@mui/material';
+import PestControlOutlinedIcon from '@mui/icons-material/PestControlOutlined';
+
 import { signup, signin } from '../../actions/auth';
+import Input from './Input';
 
 const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,6 +1,7 @@
-import React from 'react'
-import DrawerItems from './DrawerItems/DrawerItems'
+import React from 'react';
 import {Drawer, Box} from '@mui/material';
+
+import DrawerItems from './DrawerItems/DrawerItems';
 
 const DrawerCustom = ({drawerWidth, mobileOpen, window, handleDrawerToggle}) => {
     

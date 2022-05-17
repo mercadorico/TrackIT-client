@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Card, CardContent, CardActions, Typography, Chip, Divider, Box } from '@mui/material'
-import { useSelector } from 'react-redux'
+
 import DeleteBug from './UpdateBug/DeleteBug';
 import UpdateBug from './UpdateBug/UpdateBug';
 import statusColor from '../statuscolor';

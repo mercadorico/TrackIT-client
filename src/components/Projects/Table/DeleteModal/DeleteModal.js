@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { IconButton, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip } from '@mui/material';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteProject } from '../../../../actions/projects'
+import { IconButton, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+import { deleteProject } from '../../../../actions/projects'
 
 const DeleteModal = ({id}) => {
     const dispatch = useDispatch();

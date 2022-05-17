@@ -1,7 +1,8 @@
-import React from 'react'
-import { Box, Typography, Toolbar, Paper, Avatar } from '@mui/material'
-import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { Box, Typography, Toolbar, Paper, Avatar } from '@mui/material';
+
+import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
 
 const Account = ({drawerWidth}) => {
     const user = JSON.parse(localStorage.getItem('profile'));

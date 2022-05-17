@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { createProject } from '../../../actions/projects'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+
+import { createProject } from '../../../actions/projects';
 
 const AddProject = () => {
     const [project, setProject] = useState({title: '', description: ''})

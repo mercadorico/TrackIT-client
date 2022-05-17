@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions, Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBug } from '../../../actions/bugs';
+import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Card, CardContent, CardActions, Chip } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import myTheme from './styles.js';
+
+import { selectBug } from '../../../actions/bugs';
 import ReportBug from './ReportBug/ReportBug';
 import statusColor from '../statuscolor';
 

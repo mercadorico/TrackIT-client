@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Typography, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Tooltip  } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { useSelector, useDispatch } from 'react-redux';
-import DeleteModal from './DeleteModal/DeleteModal';
+
 import { selectProject } from '../../../actions/projects';
+import DeleteModal from './DeleteModal/DeleteModal';
 
 export default function BasicTable() {
     const dispatch = useDispatch();

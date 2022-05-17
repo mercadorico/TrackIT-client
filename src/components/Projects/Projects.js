@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {Toolbar, Box, Typography} from '@mui/material';
+
+import { getProjects } from '../../actions/projects';
 import BasicTable from './Table/Table';
 import AddProject from './AddProject/AddProject';
 import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getProjects } from '../../actions/projects';
 
 const Projects = ({drawerWidth}) => {
   const navigate = useNavigate();

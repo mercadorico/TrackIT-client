@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+
 import { updateBug } from '../../../../actions/bugs';
 
 const UpdateBug = ({title, detail, status, priority, project_id, id, solution}) => {

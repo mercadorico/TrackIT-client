@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem, InputLabel, FormControl, IconButton } from '@mui/material'
 import { useDispatch } from 'react-redux';
-import { reportBug } from '../../../../actions/bugs';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Select, MenuItem, InputLabel, FormControl, IconButton } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+
+import { reportBug } from '../../../../actions/bugs';
 
 const ReportBug = ({id}) => {
     const [bug, setBug] = useState({title: '', detail: '', status: '', priority: ''});

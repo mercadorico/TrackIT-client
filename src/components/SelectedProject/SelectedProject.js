@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box, CircularProgress } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
+import { Card, CardContent, CardActions, Typography, Button, Toolbar, Box, CircularProgress } from '@mui/material'
+
 import { selectProject } from '../../actions/projects';
 import { fetchBugs } from '../../actions/bugs';
 import ResponsiveDrawer from '../ResponsiveDrawer/ResponsiveDrawer';

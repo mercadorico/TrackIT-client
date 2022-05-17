@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Typography, Dialog, DialogContent, DialogActions, DialogTitle, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { Typography, Dialog, DialogContent, DialogActions, DialogTitle, Button } from '@mui/material';
+
 import { deleteBug } from '../../../../actions/bugs';
 
 const DeleteBug = ({project_id, id}) => {
