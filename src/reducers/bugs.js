@@ -9,7 +9,7 @@ const bugsReducer = (bugs = [], action) => {
         case 'UPDATE_STATUS':
             return bugs.map((bug) => {
                 if(bug._id === action.payload._id) {
-                    return action.payload;
+                    return {...bug, ...action.payload};
                 } else {
                     return bug;
                 }
