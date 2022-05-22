@@ -6,7 +6,7 @@ const bugsReducer = (bugs = [], action) => {
             return [...bugs, action.payload];
         case 'DELETE_BUG':
             return bugs.filter((bug) => bug._id !== action.payload );
-        case 'UPDATE_STATUS':
+        case 'UPDATE_BUGS_LIST':
             return bugs.map((bug) => {
                 if(bug._id === action.payload._id) {
                     return {...bug, ...action.payload};
