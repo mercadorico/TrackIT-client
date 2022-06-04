@@ -54,7 +54,7 @@ const UpdateBug = ({title, detail, status, priority, project_id, id, solution}) 
                 onChange={(e) => setBugUpdate({...bugUpdate, solution: e.target.value})} > 
               </TextField>}
 
-            <FormControl sx={{minWidth: 130}} size='small'>
+            <FormControl sx={{minWidth: 130, mr: 1}} size='small'>
                 <InputLabel id='status-select-label'>Status</InputLabel>
                 <Select name='status' label='Status' id='status-select' labelId='status-select-label' displayEmpty value={bugUpdate.status}
                     onChange={handleStatusChange}> 
