@@ -5,6 +5,7 @@ import store from '../index.js';
 export const API = axios.create({ baseURL: 'https://track-bug.herokuapp.com' });
 export const LOAD = axios.create({ baseURL: 'https://track-bug.herokuapp.com' });
 
+// send JWT info during request to authorize each request to the API.
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
