@@ -13,6 +13,7 @@ const Projects = ({drawerWidth}) => {
   const dispatch = useDispatch();
   const navState = useSelector(state => state.navState);
 
+  // Check if user successfully logged in thru local storage, redirect to auth page if not.
   useEffect(() => {
       if(localStorage.getItem('profile')) {
         dispatch(getProjects());

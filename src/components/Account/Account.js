@@ -8,6 +8,7 @@ const Account = ({drawerWidth}) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const projects = useSelector(state => state.projects);
     
+    // Filter projects that matches with the projects' author and current user id.
     const projectNumber = projects.filter((project) => {
         if(project.author === user?.result?._id)   return project;
         return null;
