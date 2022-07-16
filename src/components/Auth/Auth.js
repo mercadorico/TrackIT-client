@@ -48,6 +48,11 @@ const Auth = () => {
     setShowPassword(false);
   }
 
+  const autoSignIn = () => {
+    // Sign in automatically as test user
+    dispatch(signin({...formData, email: 'test.admin@gmail.com', password: 'test'}, navigate));
+  }
+
   const LoadingSpinner = () => {
     return (
       <>
@@ -88,7 +93,12 @@ const Auth = () => {
                           {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
                         </Button>
                       </Grid>
-                    </Grid> 
+                      <Grid item>
+                        <Button onClick={autoSignIn} color='success'>
+                          {!isSignup && 'Sign In as Test User'}
+                        </Button>
+                      </Grid> 
+                    </Grid>
                   </Grid>
                 </form>
               }
