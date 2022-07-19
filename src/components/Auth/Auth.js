@@ -86,7 +86,7 @@ const Auth = () => {
                     <Button type='submit' fullWidth variant='contained' color='primary' sx={{ml: 2, mt: 3, mb: 2 }}>
                       {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-                    <Grid container justifyContent='center'>
+                    <Grid container sx={{ml: 2}} justifyContent='center'>
                       <Grid item>
                         {authError && <Typography gutterBottom align='center' color='warning.dark' >{authError}</Typography> }
                         <Button onClick={switchMode}>
