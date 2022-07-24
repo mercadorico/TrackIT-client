@@ -65,44 +65,53 @@ const Auth = () => {
   return (
     <> 
       <Box sx={{position: 'absolute', minWidth: '100%', minHeight: '100%', zIndex: -1, background: 'linear-gradient(to right, #004ff9, #fff94c)'}}></Box>
-      <Container component='main' maxWidth='xs'>
-          <Paper sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2, mt: 5}}>
-              <Avatar sx={{bgcolor: 'primary.main', m: 1}}>
-                  <PestControlOutlinedIcon />
-              </Avatar>
-              <Typography variant='h5'>{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
-              {loading ? <LoadingSpinner /> : 
-                <form onSubmit={handleSubmit}>
-                  <Grid container spacing={2} sx={{mt: 3}}>
-                    {isSignup && (
-                      <>
-                        <Input name='firstName' label='First Name' handleChange={handleChange} autoFocus half />
-                        <Input name='lastName' label='Last Name' handleChange={handleChange} half />
-                      </>
-                    )}
-                    <Input name='email' label='Email' handleChange={handleChange} type='email' />
-                    <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-                    {isSignup && <Input name='confirmPassword' label='Confirm Password' handleChange={handleChange} type='password' />}
-                    <Button type='submit' fullWidth variant='contained' color='primary' sx={{ml: 2, mt: 3, mb: 2 }}>
-                      {isSignup ? 'Sign Up' : 'Sign In'}
-                    </Button>
-                    <Grid container sx={{ml: 2}} justifyContent='center'>
-                      <Grid item>
-                        {authError && <Typography gutterBottom align='center' color='warning.dark' >{authError}</Typography> }
-                        <Button onClick={switchMode}>
-                          {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
-                        </Button>
+      <Container component='main' maxWidth='md' sx={{display: 'flex', alignItems: 'center', height: '100vh'}}>
+      <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <Box >
+            <Typography variant='h1' color='#FFF7' sx={{fontFamily: 'Raleway sans-serif', fontSize: '5'}}>
+              TrackIT
+            </Typography>
+          </Box>
+          <Box sx={{maxWidth: '400px'}}>
+            <Paper sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2}}>
+                <Avatar sx={{bgcolor: 'primary.main', m: 1}}>
+                    <PestControlOutlinedIcon />
+                </Avatar>
+                <Typography variant='h5'>{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
+                {loading ? <LoadingSpinner /> : 
+                  <form onSubmit={handleSubmit}>
+                    <Grid container spacing={2} sx={{mt: 3}}>
+                      {isSignup && (
+                        <>
+                          <Input name='firstName' label='First Name' handleChange={handleChange} autoFocus half />
+                          <Input name='lastName' label='Last Name' handleChange={handleChange} half />
+                        </>
+                      )}
+                      <Input name='email' label='Email' handleChange={handleChange} type='email' />
+                      <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
+                      {isSignup && <Input name='confirmPassword' label='Confirm Password' handleChange={handleChange} type='password' />}
+                      <Button type='submit' fullWidth variant='contained' color='primary' sx={{ml: 2, mt: 3, mb: 2 }}>
+                        {isSignup ? 'Sign Up' : 'Sign In'}
+                      </Button>
+                      <Grid container sx={{ml: 2}} justifyContent='center'>
+                        <Grid item>
+                          {authError && <Typography gutterBottom align='center' color='warning.dark' >{authError}</Typography> }
+                          <Button onClick={switchMode}>
+                            {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
+                          </Button>
+                        </Grid>
+                        <Grid item>
+                          <Button onClick={autoSignIn} color='success'>
+                            {!isSignup && 'Sign In as Test User'}
+                          </Button>
+                        </Grid> 
                       </Grid>
-                      <Grid item>
-                        <Button onClick={autoSignIn} color='success'>
-                          {!isSignup && 'Sign In as Test User'}
-                        </Button>
-                      </Grid> 
                     </Grid>
-                  </Grid>
-                </form>
-              }
-          </Paper>
+                  </form>
+                }
+            </Paper>
+          </Box>
+        </Container>
       </Container>
     </>
   )
