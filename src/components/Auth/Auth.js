@@ -65,7 +65,7 @@ const Auth = () => {
   return (
     <> 
       <Box sx={{position: 'absolute', minWidth: '100%', minHeight: '100%', zIndex: -1, background: 'linear-gradient(to right, #004ff9, #fff94c)'}}></Box>
-      <Container component='main' maxWidth='md' sx={{display: 'flex', alignItems: 'center', height: '100vh'}}>
+      <Container component='main' maxWidth='md' sx={{display: 'flex', alignItems: {lg: 'center', sm: 'flex-start'}, height: '100vh'}}>
       <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
           <Box >
             <Typography variant='h1' color='#FFF7' sx={{fontFamily: 'Raleway sans-serif', fontSize: {lg: '5rem', xs: '3rem'}}}>
