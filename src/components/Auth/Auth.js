@@ -68,7 +68,7 @@ const Auth = () => {
       <Container component='main' maxWidth='md' sx={{display: 'flex', alignItems: 'center', height: '100vh'}}>
       <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
           <Box >
-            <Typography variant='h1' color='#FFF7' sx={{fontFamily: 'Raleway sans-serif', fontSize: '5'}}>
+            <Typography variant='h1' color='#FFF7' sx={{fontFamily: 'Raleway sans-serif', fontSize: {lg: '5rem', xs: '3rem'}}}>
               TrackIT
             </Typography>
           </Box>
