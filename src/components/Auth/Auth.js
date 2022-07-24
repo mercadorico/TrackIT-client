@@ -65,7 +65,7 @@ const Auth = () => {
   return (
     <> 
       <Box sx={{position: 'absolute', minWidth: '100%', minHeight: '100%', zIndex: -1, background: 'linear-gradient(to right, #004ff9, #fff94c)'}}></Box>
-      <Container component='main' maxWidth='xs' sx={{display: 'flex', flexDirection: 'column', mt: isSignup ? `calc((100vh - 700px)/2)` : `calc((100vh - 530px)/2)`}}>
+      <Container component='main' maxWidth='xs' sx={{display: 'flex', flexDirection: 'column', mt: isSignup ? `calc((100vh - 750px)/2)` : `calc((100vh - 530px)/2)`}}>
           <Box >
             <Typography variant='h1' color='#FFF7' align='center' sx={{fontFamily: 'Raleway sans-serif', fontSize: {lg: '5rem', xs: '3rem'}}}>
               TrackIT
